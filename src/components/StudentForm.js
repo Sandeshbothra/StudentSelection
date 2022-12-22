@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { getFirestore, addDoc, collection } from "firebase/firestore";
 
 export const StudentForm = (props) => {
-  const [formDetails, setFormDetails] = useState({});
+  const [formDetails, setFormDetails] = useState({gender:"male"});
   const db = getFirestore();
   const saveUserDetails = (e) => {
     e.preventDefault();
@@ -88,8 +88,8 @@ export const StudentForm = (props) => {
                     setFormDetails({ ...formDetails, gender: e.target.value })
                   }
                 >
-                  <option>Male</option>
-                  <option>Female</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                   <svg

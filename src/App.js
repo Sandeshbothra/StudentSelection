@@ -2,6 +2,7 @@ import { useState } from "react";
 import { LoginComponent } from "./components/LoginComponent";
 import { StudentForm } from "./components/StudentForm";
 import { ReviewerView } from "./components/ReviewerView";
+import { firebaseDB } from "./api/firebase_config";
 import "./App.css";
 
 function App() {

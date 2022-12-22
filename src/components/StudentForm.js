@@ -1,12 +1,19 @@
 import React, { useState } from "react";
+import { getFirestore, addDoc, collection } from "firebase/firestore";
 
 export const StudentForm = (props) => {
   const [formDetails, setFormDetails] = useState({});
+  const db = getFirestore();
   const saveUserDetails = (e) => {
     e.preventDefault();
-    console.log(formDetails);
+
+    addDoc(collection(db, "students"), {
+      ...formDetails,
+      status: formDetails.marks < 50 ? "rejected" : "pending",
+    }).then((response) => {
+      e.target.reset();
+    });
     //save data to Backend to be showed to reviewver
-    e.target.reset();
   };
   return (
     <div className="h-screen flex justify-center items-center">
